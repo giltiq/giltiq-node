@@ -1,3 +1,6 @@
 node_modules/
 dist/
 *.tgz
+
+# pi-hindsight runtime state (queue, receipts) — keep .pi/hindsight.json
+.pi/hindsight/
