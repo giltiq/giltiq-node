@@ -57,6 +57,21 @@ try {
 }
 ```
 
+Qualified confirmations are included from the Starter plan: 100 per account and
+calendar month on Starter, 1,000 on Business. Free keys get `PLAN_REQUIRED` (402).
+Once the allowance is used up, the API returns 402 `QUALIFIED_QUOTA_EXCEEDED` until
+the next month; the error carries `limit`, `used` and `upgradeUrl`:
+
+```typescript
+try {
+  await client.validate("DE123456789", { requester_vat_id: "DE987654321" });
+} catch (error) {
+  if (error instanceof GiltiqApiError && error.code === "QUALIFIED_QUOTA_EXCEEDED") {
+    console.warn(`Used ${error.used} of ${error.limit}. Upgrade: ${error.upgradeUrl}`);
+  }
+}
+```
+
 ## Configuration
 
 ```typescript

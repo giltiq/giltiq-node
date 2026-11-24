@@ -54,12 +54,21 @@ export interface GiltiqError {
 	code: string;
 	message: string;
 	request_id?: string;
+	/** QUALIFIED_QUOTA_EXCEEDED: monthly qualified confirmation allowance. */
+	limit?: number;
+	/** QUALIFIED_QUOTA_EXCEEDED: confirmations already used this month. */
+	used?: number;
+	/** QUALIFIED_QUOTA_EXCEEDED: where to upgrade. */
+	upgrade_url?: string;
 }
 
 export class GiltiqApiError extends Error {
 	code: string;
 	status: number;
 	requestId?: string;
+	limit?: number;
+	used?: number;
+	upgradeUrl?: string;
 
 	constructor(status: number, error: GiltiqError) {
 		super(error.message);
@@ -67,6 +76,9 @@ export class GiltiqApiError extends Error {
 		this.code = error.code;
 		this.status = status;
 		this.requestId = error.request_id;
+		this.limit = error.limit;
+		this.used = error.used;
+		this.upgradeUrl = error.upgrade_url;
 	}
 }
 
