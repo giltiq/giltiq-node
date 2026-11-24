@@ -28,6 +28,10 @@ export interface QualifiedConfirmation {
 }
 
 export interface ValidateOptions {
+	/**
+	 * Your own German VAT ID (DE + 9 digits). Required for qualified confirmations
+	 * (§ 18e UStG): a missing or non-German value returns 400 INVALID_REQUESTER_VAT_ID.
+	 */
 	requester_vat_id?: string;
 	company_name?: string;
 	company_city?: string;

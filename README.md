@@ -43,6 +43,11 @@ if (result.qualified_confirmation) {
 }
 ```
 
+`requester_vat_id` is required for qualified requests: it must be your own German VAT
+ID (DE + 9 digits) and is sent to BZSt as the requesting party. A missing or non-German
+value returns 400 `INVALID_REQUESTER_VAT_ID` before BZSt is called. Receipts belong to your
+account (not the API key), so they survive key rotation and plan downgrades.
+
 ### Error Handling
 
 ```typescript
