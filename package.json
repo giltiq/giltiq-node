@@ -35,7 +35,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/giltiq/giltiq-node.git"
+		"url": "git+https://github.com/giltiq/giltiq-node.git"
 	},
 	"homepage": "https://giltiq.de/docs",
 	"bugs": {
